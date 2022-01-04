@@ -3,11 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
 
-img = cv2.imread('img2.jpg')
+img = cv2.imread('test1.JPG')
 imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(imgGrey, (11,11), 0)
 plt.imshow(blur, cmap='gray')
-_, thrash = cv2.threshold(imgGrey, 65, 255, cv2.THRESH_BINARY)
+_, thrash = cv2.threshold(imgGrey, 40, 255, cv2.THRESH_BINARY)
 # >>Get contour and Hierarchy in image
 contours, hierarchy = cv2.findContours(thrash, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 # cv2.imshow("img", img)
@@ -34,7 +34,7 @@ for contour in contours:
     y = approx.ravel()[1] - 5
     i = i + 1
 # >> Count the entries of list
-counter = Counter(parentList)
+counter =  Counter(parentList)
 chainList = []
 filteredCountList = []
 j = 0
